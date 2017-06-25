@@ -26,6 +26,14 @@ page_soup = soup(page_html, "html.parser")
 containers = page_soup.findAll('div', {'class': 'product-item'})
 
 
+# prepare the file for save
+filename = 'fender_guitar_items.csv'
+f = open(filename, 'w')
+
+headers = 'model, color\n'
+
+f.write(headers)
+
 # Get all the model's name and the color it have
 models = []
 for container in containers:
@@ -34,5 +42,10 @@ for container in containers:
 	# colors_out = ' '.join(colors[0].text.split())
 	colors_out = colors[0].text.strip()  # strip all the whitespace, newline and tab
 	models.append((model, colors_out))
+
+	f.write(model + ',' + colors_out + '\n')
+
+
+f.close()
 
 print(models)
