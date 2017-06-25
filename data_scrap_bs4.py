@@ -26,6 +26,7 @@ page_soup = soup(page_html, "html.parser")
 containers = page_soup.findAll('div', {'class': 'product-item'})
 
 
+# Get all the model's name and the color it have
 models = []
 for container in containers:
 	model = container.div.a['title']
