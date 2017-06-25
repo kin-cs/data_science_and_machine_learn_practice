@@ -31,7 +31,8 @@ models = []
 for container in containers:
 	model = container.div.a['title']
 	colors = container.findAll('div', {'class': 'product-item__swatches'})
-	colors_out = ' '.join(colors[0].text.split())
+	# colors_out = ' '.join(colors[0].text.split())
+	colors_out = colors[0].text.strip()  # strip all the whitespace, newline and tab
 	models.append((model, colors_out))
 
 print(models)
